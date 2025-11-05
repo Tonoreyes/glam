@@ -41,9 +41,69 @@ body {
 }
 
 header {
+  display: flex;                  /* Para centrar el contenido */
+  flex-direction: column;         /* Texto en columna */
+  justify-content: center;        /* Centrado vertical */
+  align-items: center;            /* Centrado horizontal */
+  height: 100vh;                  /* Ocupa toda la altura de la pantalla */
   text-align: center;
   padding: 2rem;
-  background: #fce4ec;
+  
+  background: 
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+    url("imagenes/fachada.jpg");  /* Imagen de fondo con capa oscura */
+  background-size: cover;         /* Que cubra todo */
+  background-position: center;    /* Centrada */
+  background-repeat: no-repeat;   /* No se repite */
+  
+  color: white;                   /* Texto en blanco */
+}
+
+/* Título principal */
+header h2 {
+  font-size: clamp(2.5rem, 6vw, 4rem); /* Escala según pantalla */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Subtítulo o descripción */
+header p {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  max-width: 700px;               /* Para que no se extienda demasiado */
+}
+
+/* Estilo del botón */
+.btn-reserva {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #ff4081;   /* Rosa vibrante */
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-reserva:hover {
+  background-color: #e73370;   /* Un poco más oscuro al pasar el mouse */
+  transform: scale(1.05);      /* Efecto de zoom */
+}
+
+/* 📱 En móviles (pantallas pequeñas) */
+@media (max-width: 600px) {
+  .btn-reserva {
+    font-size: 1rem;     /* un poco más pequeño */
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* 💻 En pantallas grandes */
+@media (min-width: 1024px) {
+  .btn-reserva {
+    font-size: 1.5rem;   /* más grande y llamativo */
+    padding: 1.2rem 2.5rem;
+  }
 }
 
 .servicios {
@@ -102,4 +162,181 @@ form button {
 form button:hover {
   background: #ec407a;
 }
+/* --- RESPONSIVIDAD --- */
 
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .navbar img {
+    width: 80px;
+    height: 80px;
+    margin: 0 0 10px 0;
+  }
+
+  .navbar h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+  }
+
+  header {
+    padding: 1rem;
+  }
+
+  .servicios {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .card {
+    width: 90%; /* Ocupa casi todo el ancho */
+    margin-bottom: 1rem;
+  }
+
+  .galeria {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  .galeria img {
+    width: 100%;
+    height: auto;
+  }
+
+  form {
+    width: 90%;
+    margin: 1rem auto;
+  }
+}
+
+/* Pantallas muy pequeñas (menos de 480px) */
+@media (max-width: 480px) {
+  .navbar h1 {
+    font-size: 18px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+
+  form button {
+    font-size: 14px;
+    padding: 0.5rem;
+  }
+}
+/* Botón hamburguesa oculto en escritorio */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .navbar ul {
+    display: none; /* Oculto por defecto */
+    flex-direction: column;
+    width: 100%;
+    background: #f8d1e0;
+    margin: 0;
+    padding: 1rem 0;
+  }
+
+  .navbar ul.show {
+    display: flex; /* Se muestra cuando se activa */
+  }
+
+  .navbar ul li {
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+}
+
+.footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer h2 {
+  margin-bottom: 10px;
+  color: #b84e8a;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.social-icons a {
+  font-size: 30px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #b84e8a; /* color de tu marca */
+}
+/* Footer responsive */
+@media (max-width: 768px) {
+  .footer {
+    padding: 15px;
+  }
+
+  .footer h2 {
+    font-size: 18px;
+  }
+
+  .social-icons {
+    flex-direction: column;   /* Íconos en columna */
+    gap: 10px;
+  }
+
+  .social-icons a {
+    font-size: 26px;          /* Íconos un poco más pequeños */
+  }
+
+  .footer p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer h2 {
+    font-size: 16px;
+  }
+
+  .social-icons a {
+    font-size: 24px;
+  }
+
+  .footer p {
+    font-size: 13px;
+  }
+}
